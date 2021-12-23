@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/gallery.js"></script>
+    <script src="js/dropdown.js"></script>
     <link rel="stylesheet" href="css/common.css">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/menu.css">
@@ -21,24 +22,38 @@
             <!-- header -->
             <div id="logoBox">
                 <a href="index.html"><img src="image/logo.png" id="logoImage"></a>
+
             </div>
             <div id="topMenuBox">
                 <div class="topMenu">
                     <ul id="topMenuItem">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Notice</a></li>
-                        <li><a href="#">Activity</a></li>
-                        <li><a href="#">Gallery</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li class="menu1">
+                            <a href="#">Notice</a>
+                            <ul class="sub">
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">회의록</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu1"><a href="#">Activity</a>
+                            <ul class="sub">
+                                <li><a href="#">멘토링</a></li>
+                                <li><a href="#">프로젝트</a></li>
+                                <li><a href="reference.html">자료실</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="gallery.html">Gallery</a></li>
                     </ul>
                 </div>
-                <div class="topMenu" id="topMenu">
+                <div class="topMenu" id="top_menu">
                     <ul id="topMenuJoin">
                         <li><a href="#">회원가입</a></li>
-                        <li><a href="#">로그인</a></li>
+                        <li><a href="#" onclick="openLogin();">로그인</a></li>
                     </ul>
                 </div>
             </div>
         </header>
+
         <section>
             <div id="ctg">
                 <div class="galleryInfo">
@@ -47,10 +62,19 @@
                 </div>
             </div>
         </section>
-        <!-- 글쓰기 버튼 -->
+
+        <!-- 카테고리 & 글쓰기 버튼 -->
         <div class="writeBtn">
-            <button id="write_btn">글쓰기</button>
+            <!-- 카테고리 찾기 -->
+            <select class="select_mode" name="select_mode">
+                <option value="7">최신순</option>
+                <option value="6">오래된순</option>
+            </select>
+
+            <!-- 글쓰기 버튼 -->
+            <button id="write_btn">새 글</button>
         </div>
+
         <!-- gallery -->
         <div class="gallerylist">
             <ul>
@@ -61,7 +85,7 @@
                             <img src="image/1slide_img_01.png">
                         </div>
                         <div>
-                            <h3>제목 or 설명</h3>
+                            <h3>글쓴이 : 정현지 | 날짜 : 2021-12-21</h3>
                         </div>
                     </a>
                 </li>
@@ -72,7 +96,7 @@
                             <img src="image/1slide_img_01.png">
                         </div>
                         <div>
-                            <h3>제목 or 설명</h3>
+                            <h3>글쓴이 : 고병채 | 날짜 : 2021-12-10</h3>
                         </div>
                     </a>
                 </li>
@@ -83,7 +107,7 @@
                             <img src="image/1slide_img_01.png">
                         </div>
                         <div>
-                            <h3>제목 or 설명</h3>
+                            <h3>글쓴이 : 유정은 | 날짜 : 2021-12-05</h3>
                         </div>
                     </a>
                 </li>
@@ -94,7 +118,7 @@
                             <img src="image/1slide_img_01.png">
                         </div>
                         <div>
-                            <h3>제목 or 설명</h3>
+                            <h3>글쓴이 : 유정은 | 날짜 : 2021-12-01</h3>
                         </div>
                     </a>
                 </li>
@@ -105,7 +129,7 @@
                             <img src="image/1slide_img_01.png">
                         </div>
                         <div>
-                            <h3>제목 or 설명</h3>
+                            <h3>글쓴이 : 고병채 | 날짜 : 2021-11-25</h3>
                         </div>
                     </a>
                 </li>
@@ -116,7 +140,7 @@
                             <img src="image/1slide_img_01.png">
                         </div>
                         <div>
-                            <h3>제목 or 설명</h3>
+                            <h3>글쓴이 : 정현지 | 날짜 : 2021-11-21</h3>
                         </div>
                     </a>
                 </li>
@@ -136,14 +160,14 @@
         </div>
         <!-- 검색 -->
         <div class="search">
-            <select name="search">
+            <select name="search" id="search">
                 <option value="제목+내용">제목+내용</option>
                 <option value="제목">제목</option>
                 <option value="내용">내용</option>
                 <option value="글쓴이">글쓴이</option>
             </select>
-            <input type="text" style="width: 200px;">
-            <button id="confirm">확인</button>
+            <input type="text" style="width: 200px; height:20px">
+            <button id="confirm">검색</button>
         </div>
         <!-- footer -->
         <footer>
